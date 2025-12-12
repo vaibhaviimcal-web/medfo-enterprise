@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import DashboardLayout from '@/components/DashboardLayout'
+import DashboardLayout from '../../components/DashboardLayout'
 import { Video, Calendar, FileText, Activity, MessageSquare, Clock, User } from 'lucide-react'
 
 export default function PatientDashboard() {
