@@ -15,7 +15,7 @@ import {
   Mic,
   Search
 } from 'lucide-react'
-import { indianMedicines, diagnosisTemplates, dosageFrequency } from '@/data/indianMedicines'
+import { indianMedicines, diagnosisTemplates, dosageFrequency } from '../../data/indianMedicines'
 
 interface PatientInfo {
   name: string
