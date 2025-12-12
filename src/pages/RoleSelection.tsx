@@ -5,125 +5,138 @@ interface Role {
   id: string
   name: string
   icon: React.ReactNode
-  color: string
-  bgColor: string
-  hoverColor: string
+  gradient: string
   path: string
+  description: string
 }
 
 const roles: Role[] = [
   {
     id: 'super-admin',
     name: 'Super Admin',
-    icon: <Crown className="w-12 h-12" />,
-    color: '#d32f2f',
-    bgColor: 'bg-red-600',
-    hoverColor: 'hover:bg-red-700',
+    icon: <Crown className="w-8 h-8" />,
+    gradient: 'from-red-500 to-red-700',
     path: '/dashboard/super-admin',
+    description: 'System Administration',
   },
   {
     id: 'admin',
     name: 'Admin',
-    icon: <Settings className="w-12 h-12" />,
-    color: '#f57c00',
-    bgColor: 'bg-orange-600',
-    hoverColor: 'hover:bg-orange-700',
+    icon: <Settings className="w-8 h-8" />,
+    gradient: 'from-orange-500 to-orange-700',
     path: '/dashboard/admin',
+    description: 'Clinic Management',
   },
   {
     id: 'doctor',
     name: 'Doctor',
-    icon: <Stethoscope className="w-12 h-12" />,
-    color: '#1976d2',
-    bgColor: 'bg-blue-600',
-    hoverColor: 'hover:bg-blue-700',
+    icon: <Stethoscope className="w-8 h-8" />,
+    gradient: 'from-blue-500 to-blue-700',
     path: '/dashboard/doctor',
+    description: 'Patient Care & Telemedicine',
   },
   {
     id: 'nurse',
     name: 'Nurse',
-    icon: <Heart className="w-12 h-12" />,
-    color: '#7b1fa2',
-    bgColor: 'bg-purple-600',
-    hoverColor: 'hover:bg-purple-700',
+    icon: <Heart className="w-8 h-8" />,
+    gradient: 'from-purple-500 to-purple-700',
     path: '/dashboard/nurse',
+    description: 'Patient Assistance',
   },
   {
     id: 'receptionist',
     name: 'Receptionist',
-    icon: <ClipboardList className="w-12 h-12" />,
-    color: '#388e3c',
-    bgColor: 'bg-green-600',
-    hoverColor: 'hover:bg-green-700',
+    icon: <ClipboardList className="w-8 h-8" />,
+    gradient: 'from-green-500 to-green-700',
     path: '/dashboard/receptionist',
+    description: 'Front Desk Operations',
   },
   {
     id: 'lab-tech',
     name: 'Lab Technician',
-    icon: <Microscope className="w-12 h-12" />,
-    color: '#0097a7',
-    bgColor: 'bg-teal-600',
-    hoverColor: 'hover:bg-teal-700',
+    icon: <Microscope className="w-8 h-8" />,
+    gradient: 'from-teal-500 to-teal-700',
     path: '/dashboard/lab-tech',
+    description: 'Laboratory Services',
   },
   {
     id: 'pharmacist',
     name: 'Pharmacist',
-    icon: <Pill className="w-12 h-12" />,
-    color: '#c2185b',
-    bgColor: 'bg-pink-600',
-    hoverColor: 'hover:bg-pink-700',
+    icon: <Pill className="w-8 h-8" />,
+    gradient: 'from-pink-500 to-pink-700',
     path: '/dashboard/pharmacist',
+    description: 'Pharmacy Management',
   },
   {
     id: 'patient',
     name: 'Patient',
-    icon: <User className="w-12 h-12" />,
-    color: '#455a64',
-    bgColor: 'bg-gray-600',
-    hoverColor: 'hover:bg-gray-700',
+    icon: <User className="w-8 h-8" />,
+    gradient: 'from-gray-500 to-gray-700',
     path: '/dashboard/patient',
+    description: 'Personal Health Portal',
   },
 ]
 
 export default function RoleSelection() {
   const navigate = useNavigate()
 
-  const handleRoleClick = (path: string) => {
-    navigate(path)
-  }
-
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-8">
-      {/* Header */}
-      <div className="text-center mb-12">
-        <h1 className="text-5xl font-bold text-gray-800 mb-4">
-          Medfo <span className="text-medfo-blue">Enterprise</span>
-        </h1>
-        <p className="text-xl text-gray-600">Healthcare Management Solutions</p>
-        <p className="text-sm text-gray-500 mt-2">Select your role to access the dashboard</p>
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-50 flex items-center justify-center p-8">
+      <div className="max-w-7xl w-full">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-6xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+              Medfo
+            </span>{' '}
+            <span className="bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent">
+              Enterprise
+            </span>
+          </h1>
+          <p className="text-xl text-gray-600 mb-2">Healthcare Management Solutions</p>
+          <p className="text-sm text-gray-500">Select your role to access the dashboard</p>
+        </div>
 
-      {/* Role Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl w-full">
-        {roles.map((role) => (
-          <button
-            key={role.id}
-            onClick={() => handleRoleClick(role.path)}
-            className={`${role.bgColor} ${role.hoverColor} text-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center space-y-4 min-h-[200px]`}
-          >
-            <div className="bg-white bg-opacity-20 rounded-full p-4">
-              {role.icon}
-            </div>
-            <h3 className="text-2xl font-semibold">{role.name}</h3>
-            <p className="text-sm opacity-90">Click to access</p>
-          </button>
-        ))}
-      </div>
+        {/* Role Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {roles.map((role) => (
+            <button
+              key={role.id}
+              onClick={() => navigate(role.path)}
+              className="group relative glass-card p-8 card-hover overflow-hidden"
+            >
+              {/* Gradient Background */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${role.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+              
+              {/* Content */}
+              <div className="relative z-10 flex flex-col items-center text-center space-y-4">
+                {/* Icon */}
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${role.gradient} flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                  {role.icon}
+                </div>
+                
+                {/* Text */}
+                <div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-1">{role.name}</h3>
+                  <p className="text-sm text-gray-500">{role.description}</p>
+                </div>
 
-      {/* Footer */}
-      <div className="mt-12 text-center text-gray-500 text-sm">
-        <p>© 2025 Medfo Enterprise. All rights reserved.</p>
+                {/* Arrow */}
+                <div className="text-primary-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </div>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        {/* Footer */}
+        <div className="mt-12 text-center text-gray-500 text-sm">
+          <p>© 2025 Medfo Enterprise. All rights reserved.</p>
+          <p className="mt-1">Powered by Advanced Healthcare Technology</p>
+        </div>
       </div>
     </div>
   )
