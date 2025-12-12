@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import DashboardLayout from '@/components/DashboardLayout'
-import { Video, Users, Calendar, FileText, Clock, TrendingUp, Activity } from 'lucide-react'
+import { Video, Users, Calendar, FileText, Clock, TrendingUp, Activity, Sparkles } from 'lucide-react'
 
 export default function DoctorDashboard() {
   const navigate = useNavigate()
@@ -117,15 +117,18 @@ export default function DoctorDashboard() {
             <h2 className="text-xl font-bold text-gray-800 mb-4">Quick Actions</h2>
             <div className="space-y-3">
               <button
+                onClick={() => navigate('/dashboard/doctor/prescription')}
+                className="w-full p-4 bg-gradient-to-r from-medical-teal-500 to-medical-teal-600 text-white rounded-xl hover:shadow-lg transition-all flex items-center justify-center space-x-2"
+              >
+                <Sparkles className="w-5 h-5" />
+                <span className="font-semibold">AI Prescription</span>
+              </button>
+              <button
                 onClick={() => navigate('/dashboard/doctor/telemedicine')}
                 className="w-full p-4 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-xl hover:shadow-lg transition-all flex items-center justify-center space-x-2"
               >
                 <Video className="w-5 h-5" />
                 <span className="font-semibold">Start Video Call</span>
-              </button>
-              <button className="w-full p-4 bg-white border-2 border-gray-200 text-gray-700 rounded-xl hover:border-primary-500 hover:shadow-md transition-all flex items-center justify-center space-x-2">
-                <FileText className="w-5 h-5" />
-                <span className="font-semibold">New Prescription</span>
               </button>
               <button className="w-full p-4 bg-white border-2 border-gray-200 text-gray-700 rounded-xl hover:border-primary-500 hover:shadow-md transition-all flex items-center justify-center space-x-2">
                 <Calendar className="w-5 h-5" />
