@@ -9,6 +9,7 @@ import LabTechDashboard from './pages/dashboards/LabTechDashboard'
 import PharmacistDashboard from './pages/dashboards/PharmacistDashboard'
 import PatientDashboard from './pages/dashboards/PatientDashboard'
 import VideoCall from './pages/telemedicine/VideoCall'
+import AIPrescriptionGenerator from './pages/prescription/AIPrescriptionGenerator'
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
         {/* Telemedicine Routes */}
         <Route path="/dashboard/doctor/telemedicine" element={<VideoCall />} />
         <Route path="/dashboard/patient/telemedicine" element={<VideoCall />} />
+        
+        {/* AI Prescription Generator */}
+        <Route path="/dashboard/doctor/prescription" element={<AIPrescriptionGenerator />} />
         
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
